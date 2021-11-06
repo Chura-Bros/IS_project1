@@ -1,11 +1,8 @@
-<<<<<<< HEAD
 <?php
 include 'connect.php';
 ?>
 
 
-=======
->>>>>>> fbfa601275865ae4a905e490f7c9e0774674ef8e
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -43,14 +40,16 @@ include 'connect.php';
                 <th scope="col">Product Name </th>
                 <th scope="col">Product Price</th>
                 <th scope="col">Product Quantity</th>
+                <th scope="col">Product Description</th>
                 <th scope="col">Operations</th>
               </tr>
             </thead>
             <tbody>
-<<<<<<< HEAD
               <?php
               $sql="select*from'product_details'";
-              $result=mysqli_query($con,$sql);
+              // $result=mysqli_query($con,$sql);
+             $result= $mysqli->query($sql);
+
               if($result){
                while($row=mysqli_fetch_assoc($result)) {
                 $ID=$row['product_ID'];
@@ -65,8 +64,8 @@ include 'connect.php';
                 <td> '.$qty.'</td>
                 <td> '.$desc.'</td>
                 <td>
-                    <button><a href="">Update<a></button>
-                        <button><a href="">Delete<a></button>
+                  <button><a href="">Update<a></button>
+                 <button><a href="">Delete<a></button>
                 </td>
               </tr>';
                }
@@ -76,9 +75,6 @@ include 'connect.php';
               ?>
            
             <!-- <tr>
-=======
-              <tr>
->>>>>>> fbfa601275865ae4a905e490f7c9e0774674ef8e
                 <td>1</td>
                 <td>red shoe</td>
                 <td>ksh 1200</td>
@@ -104,13 +100,8 @@ include 'connect.php';
                 <td>Watch shoe</td>
                 <td>ksh 5000</td>
                 <td>5</td>
-<<<<<<< HEAD
                 <td> -->
-=======
-                <td>
->>>>>>> fbfa601275865ae4a905e490f7c9e0774674ef8e
-                    <button><a href="">Update<a></button>
-                        <button><a href="">Delete<a></button>
+                   
                 </td>
               </tr>
             </tbody>

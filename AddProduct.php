@@ -1,23 +1,4 @@
 <?php
-<<<<<<< HEAD
-include 'connect.php';
-if(isset($_post['submit'])){
-$ID=$_POST['product_ID'];
-$name=$_POST['product_name'];
-$price=$_POST['product_price'];
-$qty=$_POST['product_qty'];
-$desc=$_POST['product_desc'];
-
-
-$sql="insert into 'product_details'(product_ID,product_name,product_price,product_qty,product_desc)
-values ('$name','$ID','$qty','$desc','$price')" ;
-$result=mysqli_query($con,$sql);
-if($result){
-    echo"Data inserted successfully";
-}else{
-    die(mysqli_error($con));
-}
-=======
 include('connect.php');
 
 if(isset($_POST['add-product'])){
@@ -32,7 +13,6 @@ if(isset($_POST['add-product'])){
 
     $mysqli->query($query) or die($mysqli->error);
 
->>>>>>> fbfa601275865ae4a905e490f7c9e0774674ef8e
 }
 
 ?>
@@ -41,10 +21,7 @@ if(isset($_POST['add-product'])){
 <!DOCTYPE html>
 <html lang="en">
 <head>
-<<<<<<< HEAD
-=======
  
->>>>>>> fbfa601275865ae4a905e490f7c9e0774674ef8e
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -55,20 +32,6 @@ if(isset($_POST['add-product'])){
       <link rel="stylesheet" href="style.css">
 </head>
 <body>
-<<<<<<< HEAD
-    <header>
-        
-        <nav>
-           
-        
-            <ul>
-                <ul>
-                    <li><a href="UI.html" ><h2>ChuraBros Store</h2></a></li>
-              <li><a href="UI.html" >Home</a></li>
-              <li><a href="User Log in .html" >Log in </a></li>
-              <li><a href="Cart.html" >Cart</a></li> 
-              <li><a href="Admin log in.html" >Admin</a></li> 
-=======
     <header>        
         <nav>      
             <ul>                
@@ -77,17 +40,12 @@ if(isset($_POST['add-product'])){
                 <li><a href="User Log in .html" >Log in </a></li>
                 <li><a href="Cart.html" >Cart</a></li> 
                 <li><a href="Admin log in.html" >Admin</a></li> 
->>>>>>> fbfa601275865ae4a905e490f7c9e0774674ef8e
              </ul>
         </nav>
     </header>
        
         <br><br>
-<<<<<<< HEAD
-    <form method="post"> 
-=======
     <form method="POST" action=""> 
->>>>>>> fbfa601275865ae4a905e490f7c9e0774674ef8e
         <h3>Add product </h3>
         <label for="Product_ID">Product ID:</label>
         <input type="text" id="product_ID" name="product_ID"
@@ -111,19 +69,10 @@ if(isset($_POST['add-product'])){
         <br><br>
         <label for="Product_description">Product description:</label>
         <input type="text" id="Product_description" name="product_desc"
-<<<<<<< HEAD
-        placeholder="product description ">
-    
-        <br><br>
-     
-
-        <button type="submit" class="btn"name="ADD">ADD </button>
-=======
         placeholder="product description ">    
         <br><br>  
         <button type="submit" name="add-product">Add</button> 
        
->>>>>>> fbfa601275865ae4a905e490f7c9e0774674ef8e
     </form>
 </body>
  </html>
