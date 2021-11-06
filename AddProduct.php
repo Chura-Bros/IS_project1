@@ -13,6 +13,8 @@ if(isset($_POST['add-product'])){
 
     $mysqli->query($query) or die($mysqli->error);
 
+    (header("location: productList.php"));
+
 }
 
 ?>

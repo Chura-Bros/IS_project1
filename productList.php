@@ -1,3 +1,14 @@
+<?php
+include 'connect.php';
+
+$query="(SELECT * FROM product_details)" ;
+
+$result = $mysqli->query($query) or die($mysqli->error);
+
+
+?>
+
+
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -26,7 +37,7 @@
         </nav>
     </header>
     <div class="button">
-        <button>Add product</button>
+        <a href="./AddProduct.php">Add product</a>
 
         <table class="table">
             <thead>
@@ -35,11 +46,38 @@
                 <th scope="col">Product Name </th>
                 <th scope="col">Product Price</th>
                 <th scope="col">Product Quantity</th>
+                <th scope="col">Product Description</th>
                 <th scope="col">Operations</th>
               </tr>
             </thead>
             <tbody>
-              <tr>
+              <?php
+          
+              if($result){
+               while($row=mysqli_fetch_assoc($result)) {
+                $ID=$row['product_ID'];
+                $name=$row['product_name'];
+                $price=$row['product_price'];
+                $qty=$row['product_qty'];
+                $desc=$row['product_desc'];
+                echo '<tr>
+                <td>$'.$ID.'</td>
+                <td>'.$name.'</td>
+                <td> '.$price.'</td>
+                <td> '.$qty.'</td>
+                <td> '.$desc.'</td>
+                <td>
+                  <button><a href="">Update<a></button>
+                 <button><a href="">Delete<a></button>
+                </td>
+              </tr>';
+               }
+                
+              }
+
+              ?>
+           
+            <!-- <tr>
                 <td>1</td>
                 <td>red shoe</td>
                 <td>ksh 1200</td>
@@ -65,9 +103,8 @@
                 <td>Watch shoe</td>
                 <td>ksh 5000</td>
                 <td>5</td>
-                <td>
-                    <button><a href="">Update<a></button>
-                        <button><a href="">Delete<a></button>
+                <td> -->
+                   
                 </td>
               </tr>
             </tbody>
