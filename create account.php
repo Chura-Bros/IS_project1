@@ -1,3 +1,27 @@
+<?php
+include('connect.php');
+
+if(isset($_POST['add-user'])){
+    $ID=$_POST['ID'];
+    $f_name=$_POST['first_name'];
+    $l_name=$_POST['last_name'];
+    $address=$_POST['address'];
+    $email=$_POST['email'];
+    $phone=$_POST['phone_no'];
+    $pass=$_POST['password'];
+
+
+    $query="insert into customer_details (ID,first_name,last_name,address,email,phone_no,password)
+    values ('$ID', '$f_name', '$l_name', '$address', '$email','$phone','$pass')" ;
+
+    $mysqli->query($query) or die($mysqli->error);
+
+}
+
+?>
+
+
+
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -29,8 +53,12 @@
    
     <br><br>
 
-    <form > 
+    <form method="POST" action=""> 
         <h3>Create account</h3>
+        <label for="ID">Customer ID:</label>
+    <input type="text" id="ID" name="ID"
+    placeholder="e.g 12345 ">
+        <br><br>
     <label for="first_name">First Name:</label>
     <input type="text" id="first_name" name="first_name"
     placeholder="e.g Yusuf ">
@@ -40,6 +68,10 @@
     <input type="text" id="last_name" name="last_name"
     placeholder="e.g Ali">
     <br><br>
+    <label for="adress">customer address:</label>
+    <input type="text" id="address" name="address"
+    placeholder="naironi west">
+    <br><br>
     <label for="email">Email:</label>
     <input type="Email" id="email" name="email"
     placeholder="Yusuf.Ali@gmail.com">
@@ -48,19 +80,19 @@
 
     <br><br>
     <label for="pass">Password:</label>
-    <input type="password" id="pass" name="pass"
+    <input type="password" id="pass" name="password"
     >
 
     <br><br>
     <label for="phone">Phone number:</label>
-    <input type="tel" id="phone " name="phone"
+    <input type="tel" id="phone " name="phone_no"
     placeholder="0712345678">
     <br><br>
 
 
     <input type ="reset">
 
-   <input type ="submit">
+    <button type="submit" name="add-user">create</button> 
 
    <p>if you already have an account click here  <a href="User Log in .html" >sign in</a> </p>
 
