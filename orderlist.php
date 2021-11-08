@@ -42,6 +42,7 @@ include 'connect.php';
                 <th scope="col">order Name </th>
                 <th scope="col">Product Price</th>
                 <th scope="col">Product Quantity</th>
+                <th scope="col">Product Description</th>
                 <th scope="col">Operations</th>
               </tr>
             </thead>
@@ -61,6 +62,7 @@ include 'connect.php';
                 <td>'.$name.'</td>
                 <td> '.$price.'</td>
                 <td> '.$qty.'</td>
+                <td> '.$desc.'</td>
                 <td> '.$desc.'</td>
                 <td>
                     <button><a href="">Update<a></button>
