@@ -1,3 +1,6 @@
+<?php
+session_start();
+?>
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -24,6 +27,7 @@
         <li><a href="User Log in .html" >Log in </a></li>
         <li><a href="Cart.html" >Cart</a></li> 
         <li><a href="Admin log in.html" >Admin</a>
+        <li>Welcome<?php echo $_SESSION ["email"]; ?></li>
         
         </li> 
 

@@ -7,9 +7,10 @@ if(isset($_POST['add-product'])){
     $price=$_POST['product_price'];
     $qty=$_POST['product_qty'];
     $desc=$_POST['product_desc'];
+    $url=$_POST['url'];
 
-    $query="insert into product_details (product_ID,product_name,product_price,product_qty,product_desc)
-    values ('$ID', '$name', '$price', '$qty', '$desc')" ;
+    $query="insert into product_details (product_ID,product_name,product_price,product_qty,product_desc,url)
+    values ('$ID', '$name', '$price', '$qty', '$desc','$url')" ;
 
     $mysqli->query($query) or die($mysqli->error);
 
@@ -73,6 +74,10 @@ if(isset($_POST['add-product'])){
         <input type="text" id="Product_description" name="product_desc"
         placeholder="product description ">    
         <br><br>  
+        <label for="Product_url">Product URL:</label>
+        <input type="text" id="Product_description" name="url"
+        placeholder="url">    
+        <br><br>
         <button type="submit" name="add-product">Add</button> 
        
     </form>
