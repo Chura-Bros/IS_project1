@@ -48,7 +48,7 @@ $conn=mysqli_connect('localhost','root','','churabros')
     <br><br>
    
     <label for="pass">Password:</label>
-    <input type="password" id="pass" name="pass">
+    <input type="password" id="pass" name="password">
     <br><br>
   
 
@@ -63,16 +63,16 @@ $conn=mysqli_connect('localhost','root','','churabros')
     <?php
     if(isset($post['login'])){
         $email=$_post['email'];
-        $pass=$_post['pass'];
+        $pass=$_post['password'];
 
-        $select=mysqli_query($conn,"SELECT*FROM customer_details WHERE email='$email' AND pass ='$pass'");
+        $select=mysqli_query($conn,"SELECT*FROM customer_details WHERE email='$email' AND password ='$pass'");
         $row=mysqli_fetch_array($select);
         
         
         if(is_array($row)){
 
             $_SESSION["email"]=$row['email'];
-            $_SESSION["pass"]=$row['pass'];
+            $_SESSION["password"]=$row['password'];
         }else{
             echo'<script type="text/javascript>';
             echo 'alert("invalid email or password")';
