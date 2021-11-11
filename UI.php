@@ -1,6 +1,8 @@
+
 <?php
-session_start();
+include 'connect.php';
 ?>
+
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -27,15 +29,35 @@ session_start();
         <li><a href="User Log in .html" >Log in </a></li>
         <li><a href="Cart.html" >Cart</a></li> 
         <li><a href="Admin log in.html" >Admin</a>
-        <li>Welcome<?php echo $_SESSION ["email"]; ?></li>
         
         </li> 
 
        </ul>
         </nav>
     </header>
+    <?php
+              $sql="select*from'product_details'";
+              $result=mysqli_query($con,$sql);
+              if($result){
+               while($row=mysqli_fetch_assoc($result)) {
+                $ID=$row['product_ID'];
+                $name=$row['product_name'];
+                $price=$row['product_price'];
+                $qty=$row['product_qty'];
+                $desc=$row['product_desc'];
+                echo '  <div class="image">
+                <img src="./Photos/HRX socks.jpg" alt="thisirt1">
+                <h4>'.$name.'</h4>
+              <p>KSH '.$price.'</p> 
+               <a class="add-cart cart1"href="#"> Add Cart</a>
+          </div>';
+               }
+                
+              }
+
+              ?>
     
-  <div class ="container">
+  <!-- <div class ="container">
       <div class="image">
           <img src="./Photos/HRX socks.jpg" alt="thisirt1">
           <h4>HRX socks</h4>
@@ -60,51 +82,10 @@ session_start();
     <img src="./Photos/Fossil watch .jpg" alt="thisirt1">
     <h4>Fossil watch</h4>
   <p>KSH 11,000</p> 
-   <a class="add-cart "href="#"> Add Cart</a>
+   <a class="add-cart "href="#"> Add Cart</a> -->
    
 </div>
-<div class="image">
-  <img src="./Photos/Fossil watch .jpg" alt="thisirt1">
-  <h4>Fossil watch</h4>
-<p>KSH 11,000</p> 
- <a class="add-cart "href="#"> Add Cart</a>
- 
-</div>
-<div class="image">
-  <img src="./Photos/Fossil watch .jpg" alt="thisirt1">
-  <h4>Fossil watch</h4>
-<p>KSH 11,000</p> 
- <a class="add-cart "href="#"> Add Cart</a>
- 
-</div>
-<div class="image">
-  <img src="./Photos/Fossil watch .jpg" alt="thisirt1">
-  <h4>Fossil watch</h4>
-<p>KSH 11,000</p> 
- <a class="add-cart "href="#"> Add Cart</a>
- 
-</div>
-<div class="image">
-  <img src="./Photos/Fossil watch .jpg" alt="thisirt1">
-  <h4>Fossil watch</h4>
-<p>KSH 11,000</p> 
- <a class="add-cart "href="#"> Add Cart</a>
- 
-</div>
-<div class="image">
-  <img src="./Photos/Fossil watch .jpg" alt="thisirt1">
-  <h4>Fossil watch</h4>
-<p>KSH 11,000</p> 
- <a class="add-cart "href="#"> Add Cart</a>
- 
-</div>
-<div class="image">
-  <img src="./Photos/Fossil watch .jpg" alt="thisirt1">
-  <h4>Fossil watch</h4>
-<p>KSH 11,000</p> 
- <a class="add-cart "href="#"> Add Cart</a>
- 
-</div>
+
   </div>  
 
   <footer>
