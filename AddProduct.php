@@ -7,12 +7,15 @@ if(isset($_POST['add-product'])){
     $price=$_POST['product_price'];
     $qty=$_POST['product_qty'];
     $desc=$_POST['product_desc'];
-    
+
 
     $query="insert into product_details (product_ID,product_name,product_price,product_qty,product_desc,)
+
     values ('$ID', '$name', '$price', '$qty', '$desc')" ;
 
     $mysqli->query($query) or die($mysqli->error);
+
+    (header("location: productList.php"));
 
 }
 

@@ -1,7 +1,15 @@
 <?php
-include 'connect.php';
-?>
+include_once 'connect.php';
+$ID=7;
+$name="";
+$price=0;
+$qty=0;
+$desc="";
 
+$query="(SELECT * FROM product_details)" ;
+
+$result = $mysqli->query($query) or die($mysqli->error);
+?>
 
 <!DOCTYPE html>
 <html lang="en">
@@ -33,7 +41,7 @@ include 'connect.php';
         </nav>
     </header>
     <div class="button">
-        <button>Add product</button>
+        <a href="./AddProduct.php">Add product</a>
 
         <table class="table">
             <thead>
@@ -48,64 +56,32 @@ include 'connect.php';
             </thead>
             <tbody>
               <?php
-              $sql="select*from'product_details'";
-              // $result=mysqli_query($con,$sql);
-             $result= $mysqli->query($sql);
-
+          
               if($result){
+               
                while($row=mysqli_fetch_assoc($result)) {
-                $ID=$row['product_ID'];
+                $ID=(int)$row['product_ID'];
                 $name=$row['product_name'];
                 $price=$row['product_price'];
                 $qty=$row['product_qty'];
                 $desc=$row['product_desc'];
                 echo '<tr>
-                <td>$'.$ID.'</td>
+                <td>'.$ID.'</td>
                 <td>'.$name.'</td>
                 <td> '.$price.'</td>
                 <td> '.$qty.'</td>
                 <td> '.$desc.'</td>
                 <td>
-                  <button><a href="">Update<a></button>
-                 <button><a href="">Delete<a></button>
+                  <button type="submit" name="update"><a href="updateProduct.php?product_ID='.$ID.'">Update<a></button>
+                 <button type="submit" name="delete"><a href="deleteProduct.php?product_ID='.$ID.'">Delete<a></button>
                 </td>
               </tr>';
                }
                 
               }
 
-              ?>
-           
-            <!-- <tr>
-                <td>1</td>
-                <td>red shoe</td>
-                <td>ksh 1200</td>
-                <td>2</td>
-                <td>
-                    <button><a href="">Update<a></button>
-                        <button><a href="">Delete<a></button>
-                </td>
-              </tr>
-              <tr>
-                <td>1</td>
-               <td>Tracksuit</td>
-               <td>ksh 10000</td>
-               <td>6</td>
-               <td>
-                <button><a href="">Update<a></button>
-                    <button><a href="">Delete<a></button>
-            </td>
-               
-              </tr>
-              <tr>
-                <td>1</td>
-                <td>Watch shoe</td>
-                <td>ksh 5000</td>
-                <td>5</td>
-                <td> -->
-                   
-                </td>
-              </tr>
+              ?>        
+             
             </tbody>
           </table>
     </div>
