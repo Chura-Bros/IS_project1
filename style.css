@@ -148,6 +148,8 @@ background-color: #111;
 height:auto;
 width:100vw; 
 color: white;
+position: fixed;
+bottom: 0;
 }
 .footer-content{
     display: flex;
