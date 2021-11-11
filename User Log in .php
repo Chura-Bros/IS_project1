@@ -1,3 +1,8 @@
+<?php
+session_start();
+$conn=mysqli_connect('localhost','root','','churabros')
+
+?>
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -23,43 +28,63 @@
                     <li><a href="UI.html" ><h2>ChuraBros Store</h2></a></li>
               <li><a href="UI.html" >Home</a></li>
               <li><a href="User Log in .html" >Log in </a></li>
-              <li><a href="Cart.html" >Cart</a></li> 
               <li><a href="Admin log in.html" >Admin</a></li> 
+              <li><a href="Cart.html" ><i class="fa fa-shopping-cart" style="font-size:24px"></i></a></li> 
+
              </ul>
         </nav>
     </header>
-  
+   
     <br><br>
-    <form > 
-        <h3>Admin Login</h3>
-    <label for="first_name">First Name:</label>
-    <input type="text" id="first_name" name="first_name"
-    placeholder="e.g Yusuf ">
+
+    <form action="User Log in.php"method="post"> 
+        <h3>User Login</h3>
+ 
+    <label for="email">Email Address:</label>
+    <input type="Email" id="email" name="email"
+    placeholder="Yusuf.Ali@gmail.com">
     
+ 
     <br><br>
-    <label for="last_name">Last Name:</label>
-    <input type="text" id="last_name" name="last_name"
-    placeholder="e.g Ali">
-    <br><br>
+   
     <label for="pass">Password:</label>
-    <input type="password" id="pass" name="pass"
-    >
-
+    <input type="password" id="pass" name="password">
     <br><br>
-
-
-    
-    <label for="phone">Admin ID:</label>
-    <input type="number" id="ID " name="ID"
-    placeholder="123">
-    <br><br>
-
+  
 
     <input type ="reset">
 
-   <input type ="submit">
+    <button type="submit" name="login">Log in:</button> 
+
+   <p>If you dont have an account click here <a href="create account.php" >Create account</a> </p>
 
     </form>
+
+    <?php
+    if(isset($post['login'])){
+        $email=$_post['email'];
+        $pass=$_post['password'];
+
+        $select=mysqli_query($conn,"SELECT*FROM customer_details WHERE email='$email' AND password ='$pass'");
+        $row=mysqli_fetch_array($select);
+        
+        
+        if(is_array($row)){
+
+            $_SESSION["email"]=$row['email'];
+            $_SESSION["password"]=$row['password'];
+        }else{
+            echo'<script type="text/javascript>';
+            echo 'alert("invalid email or password")';
+            echo'window.location.href= "User Log in.php"';
+            echo'</script>';
+        }
+    }
+    if(isset($_SESSION["email"])){
+        header("location:UI.php");
+    }
+
+    ?>
     <footer>
         <div class="footer-content ">
         <h3>Footer deatails</h3>

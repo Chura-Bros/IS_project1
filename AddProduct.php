@@ -7,9 +7,10 @@ if(isset($_POST['add-product'])){
     $price=$_POST['product_price'];
     $qty=$_POST['product_qty'];
     $desc=$_POST['product_desc'];
+    $url=$_POST['url'];
 
-    $query="insert into product_details (product_ID,product_name,product_price,product_qty,product_desc)
-    values ('$ID', '$name', '$price', '$qty', '$desc')" ;
+    $query="insert into product_details (product_ID,product_name,product_price,product_qty,product_desc,url)
+    values ('$ID', '$name', '$price', '$qty', '$desc','$url')" ;
 
     $mysqli->query($query) or die($mysqli->error);
 
@@ -30,6 +31,8 @@ if(isset($_POST['add-product'])){
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@100&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+
         <title>Document</title>
       <link rel="stylesheet" href="style.css">
 </head>
@@ -73,8 +76,29 @@ if(isset($_POST['add-product'])){
         <input type="text" id="Product_description" name="product_desc"
         placeholder="product description ">    
         <br><br>  
+        <label for="Product_url">Product URL:</label>
+        <input type="text" id="Product_description" name="url"
+        placeholder="url">    
+        <br><br>
         <button type="submit" name="add-product">Add</button> 
        
     </form>
+    <footer>
+<div class="footer-content ">
+<h3>Footer deatails</h3>
+<p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Ea rem exercitationem quaerat! Vitae reiciendis nihil fugit dolore eligendi pariatur sunt consequuntur eveniet quod veniam?</p>
+<ul class="socials">
+<li><a href="#" class="fa fa-facebook"></a></li>
+<li><a href="#" class="fa fa-twitter"></a></li>
+<li><a href="#" class="fa fa-google-plus"></a></li>
+<li><a href="#" class="fa fa-youtube"></a></li>
+<li><a href="#" class="fa fa-linkedin"></a></li>
+</ul>
+</div>
+<div class="footer-bottom">
+  <p>copyright &copy; 2021 code0pacity. desgined by <span>Yusuf and shawn</span></p>
+</div>
+
+  </footer>
 </body>
  </html>
