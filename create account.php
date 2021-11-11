@@ -9,10 +9,10 @@ if(isset($_POST['add-user'])){
     $email=$_POST['email'];
     $phone=$_POST['phone_no'];
     $pass=$_POST['password'];
-
+$hashed=hash('sha512',$pass);
 
     $query="insert into customer_details (ID,first_name,last_name,address,email,phone_no,password)
-    values ('$ID', '$f_name', '$l_name', '$address', '$email','$phone','$pass')" ;
+    values ('$ID', '$f_name', '$l_name', '$address', '$email','$phone','$hashed')" ;
 
     $mysqli->query($query) or die($mysqli->error);
 
