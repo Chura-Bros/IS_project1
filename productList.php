@@ -1,17 +1,15 @@
 <?php
-include 'connect.php';
-<<<<<<< HEAD
-
+include_once 'connect.php';
+$ID=7;
+$name="";
+$price=0;
+$qty=0;
+$desc="";
 
 $query="(SELECT * FROM product_details)" ;
 
 $result = $mysqli->query($query) or die($mysqli->error);
-
-
-=======
->>>>>>> 07d8863d783582f94076e42dedec69c00ff9c786
 ?>
-
 
 <!DOCTYPE html>
 <html lang="en">
@@ -58,63 +56,25 @@ $result = $mysqli->query($query) or die($mysqli->error);
             </thead>
             <tbody>
               <?php
-<<<<<<< HEAD
           
               if($result){
-                $ID=0;
-                $name="";
-                $price=0;
-                $qty=0;
-                $desc="";
+               
                while($row=mysqli_fetch_assoc($result)) {
                 $ID=(int)$row['product_ID'];
-=======
-              $sql="select*from'product_details'";
-              // $result=mysqli_query($con,$sql);
-             $result= $mysqli->query($sql);
-
-              if($result){
-               while($row=mysqli_fetch_assoc($result)) {
-                $ID=$row['product_ID'];
->>>>>>> 07d8863d783582f94076e42dedec69c00ff9c786
                 $name=$row['product_name'];
                 $price=$row['product_price'];
                 $qty=$row['product_qty'];
                 $desc=$row['product_desc'];
                 echo '<tr>
-<<<<<<< HEAD
                 <td>'.$ID.'</td>
-=======
-                <td>$'.$ID.'</td>
->>>>>>> 07d8863d783582f94076e42dedec69c00ff9c786
                 <td>'.$name.'</td>
                 <td> '.$price.'</td>
                 <td> '.$qty.'</td>
                 <td> '.$desc.'</td>
-<<<<<<< HEAD
-=======
                 <td>
-                  <button><a href="">Update<a></button>
-                 <button><a href="">Delete<a></button>
+                  <button type="submit" name="update"><a href="updateProduct.php?product_ID='.$ID.'">Update<a></button>
+                 <button type="submit" name="delete"><a href="deleteProduct.php?product_ID='.$ID.'">Delete<a></button>
                 </td>
-              </tr>';
-               }
-                
-              }
-
-              ?>
-           
-            <!-- <tr>
-                <td>1</td>
-                <td>red shoe</td>
-                <td>ksh 1200</td>
-                <td>2</td>
->>>>>>> 07d8863d783582f94076e42dedec69c00ff9c786
-                <td>
-                  <button type="submit" name="update"><a href="./updateProduct.php?product_ID="'.$ID.'>Update<a></button>
-                 <button type="submit" name="delete"><a href="./deleteProduct.php?product_ID="'.$ID.'>Delete<a></button>
-                </td>
-<<<<<<< HEAD
               </tr>';
                }
                 
@@ -122,29 +82,6 @@ $result = $mysqli->query($query) or die($mysqli->error);
 
               ?>        
              
-=======
-              </tr>
-              <tr>
-                <td>1</td>
-               <td>Tracksuit</td>
-               <td>ksh 10000</td>
-               <td>6</td>
-               <td>
-                <button><a href="">Update<a></button>
-                    <button><a href="">Delete<a></button>
-            </td>
-               
-              </tr>
-              <tr>
-                <td>1</td>
-                <td>Watch shoe</td>
-                <td>ksh 5000</td>
-                <td>5</td>
-                <td> -->
-                   
-                </td>
-              </tr>
->>>>>>> 07d8863d783582f94076e42dedec69c00ff9c786
             </tbody>
           </table>
     </div>
