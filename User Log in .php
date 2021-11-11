@@ -56,7 +56,7 @@ $conn=mysqli_connect('localhost','root','','churabros')
 
     <button type="submit" name="login">Log in:</button> 
 
-   <p>If you dont have an account click here <a href="create account.html" >Create account</a> </p>
+   <p>If you dont have an account click here <a href="create account.php" >Create account</a> </p>
 
     </form>
 
