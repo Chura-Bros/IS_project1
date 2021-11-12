@@ -38,21 +38,7 @@ $hashed=hash('sha512',$pass);
       <link rel="stylesheet" href="style.css">
 </head>
 <body>
-    <header>
-        
-        <nav>
-           
-        
-            <ul>
-                <ul>
-                    <li><a href="UI.html" ><h2>ChuraBros Store</h2></a></li>
-              <li><a href="UI.html" >Home</a></li>
-              <li><a href="User Log in .html" >Log in </a></li>
-              <li><a href="Cart.html" >Cart</a></li> 
-              <li><a href="Admin log in.html" >Admin</a></li> 
-             </ul>
-        </nav>
-    </header>
+<?php include_once("header.php"); ?>
    
     <br><br>
 

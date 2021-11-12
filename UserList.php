@@ -6,7 +6,7 @@ $price=0;
 $qty=0;
 $desc="";
 
-$query="(SELECT * FROM product_details)" ;
+$query="(SELECT * FROM customer_details)" ;
 
 $result = $mysqli->query($query) or die($mysqli->error);
 ?>
@@ -33,12 +33,15 @@ $result = $mysqli->query($query) or die($mysqli->error);
         <table class="table">
             <thead>
               <tr>
-                <th scope="col">Product ID</th>
-                <th scope="col">Product Name </th>
-                <th scope="col">Product Price</th>
-                <th scope="col">Product Quantity</th>
-                <th scope="col">Product Description</th>
-                <th scope="col">Operations</th>
+                <th scope="col">Customer ID</th>
+                <th scope="col">first Name </th>
+                <th scope="col">Last Name</th>
+                <th scope="col">Address</th>
+                <th scope="col">email</th>
+                <th scope="col">Phone no</th>
+                <th scope="col">password</th>
+                <th scope="col">operations</th>
+
               </tr>
             </thead>
             <tbody>
@@ -47,20 +50,24 @@ $result = $mysqli->query($query) or die($mysqli->error);
               if($result){
                
                while($row=mysqli_fetch_assoc($result)) {
-                $ID=(int)$row['product_ID'];
-                $name=$row['product_name'];
-                $price=$row['product_price'];
-                $qty=$row['product_qty'];
-                $desc=$row['product_desc'];
+                $ID=(int)$row['ID'];
+                $f_name=$row['first_name'];
+                $l_name=$row['last_name'];
+                $address=$row['address'];
+                $email=$row['email'];
+                $phone=$row['phone_no'];
+                $pass=$row['password'];
                 echo '<tr>
                 <td>'.$ID.'</td>
-                <td>'.$name.'</td>
-                <td> '.$price.'</td>
-                <td> '.$qty.'</td>
-                <td> '.$desc.'</td>
+                <td>'.$f_name.'</td>
+                <td>'.$l_name.'</td>
+                <td> '.$address.'</td>
+                <td> '.$email.'</td>
+                <td> '.$phone.'</td>
+                <td>'.$pass.'</td>
                 <td>
-                  <button type="submit" name="update"><a href="updateProduct.php?product_ID='.$ID.'">Update<a></button>
-                 <button type="submit" name="delete"><a href="deleteProduct.php?product_ID='.$ID.'">Delete<a></button>
+                  
+                 <button type="submit" name="delete"><a href="deleteuser.php?ID='.$ID.'">Delete<a></button>
                 </td>
               </tr>';
                }
