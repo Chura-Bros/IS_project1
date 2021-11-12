@@ -1,6 +1,33 @@
 <?php
 session_start();
-$conn=mysqli_connect('localhost','root','','churabros')
+
+include("connect.php");
+include("LoginFunction.php");
+
+if($_SERVER['REQUEST_METHOD'] == "POST"){
+    // Something was posted
+   $email = $_POST['email'];
+    
+   $password = $_POST['password'];
+
+   if(!empty($email) && !empty($password) && !is_numeric($email)){
+    // read from database
+    $query = "select * from customer_details where email = '$email' limit 1";
+    $result = mysqli_query($conn, $query);
+
+    if($result && mysqli_num_rows($result) > 0){
+        $user_data = mysqli_fetch_assoc($result);
+        if($user_data['password'] === $password){
+            $_SESSION['email'] = $user_data['email'];
+            header("Location: UI.php");
+            die;
+        }
+    }  
+    echo "Wrong email or password!";
+}else{
+       echo "Wrong email or password!";
+   }
+}
 
 ?>
 <!DOCTYPE html>
@@ -60,31 +87,7 @@ $conn=mysqli_connect('localhost','root','','churabros')
 
     </form>
 
-    <?php
-    if(isset($post['login'])){
-        $email=$_post['email'];
-        $pass=$_post['password'];
-
-        $select=mysqli_query($conn,"SELECT*FROM customer_details WHERE email='$email' AND password ='$pass'");
-        $row=mysqli_fetch_array($select);
-        
-        
-        if(is_array($row)){
-
-            $_SESSION["email"]=$row['email'];
-            $_SESSION["password"]=$row['password'];
-        }else{
-            echo'<script type="text/javascript>';
-            echo 'alert("invalid email or password")';
-            echo'window.location.href= "User Log in.php"';
-            echo'</script>';
-        }
-    }
-    if(isset($_SESSION["email"])){
-        header("location:UI.php");
-    }
-
-    ?>
+    
     <footer>
         <div class="footer-content ">
         <h3>Footer deatails</h3>
