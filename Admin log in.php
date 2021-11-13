@@ -1,3 +1,36 @@
+<?php
+session_start();
+
+include("connect.php");
+include("LoginFunction.php");
+
+if($_SERVER['REQUEST_METHOD'] == "POST"){
+    // Something was posted
+   $ID = $_POST['admin_ID'];
+    
+   $password = $_POST['password'];
+
+   if(!empty($ID) && !empty($password) && !is_numeric($ID)){
+    // read from database
+    $query = "select * from admin_details where admin_ID = '$ID' limit 1";
+    $result = mysqli_query($conn, $query);
+
+    if($result && mysqli_num_rows($result) > 0){
+        $user_data = mysqli_fetch_assoc($result);
+        if($user_data['password'] === $password){
+            $_SESSION['admin_ID'] = $user_data['admin_ID'];
+            header("Location: productList.php");
+            die;
+        }
+    }  
+    echo "Wrong ID or password!";
+}else{
+       echo "Wrong ID or password!";
+   }
+}
+
+?>
+
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -18,33 +51,24 @@
     <br><br>
     <form > 
         <h3>Admin Login</h3>
-    <label for="first_name">First Name:</label>
-    <input type="text" id="first_name" name="first_name"
-    placeholder="e.g Yusuf ">
-    
-    <br><br>
-    <label for="last_name">Last Name:</label>
-    <input type="text" id="last_name" name="last_name"
-    placeholder="e.g Ali">
+        <label for="phone">Admin ID:</label>
+    <input type="text" id="ID " name="admin_ID"
+    placeholder="123">
     <br><br>
     <label for="pass">Password:</label>
-    <input type="password" id="pass" name="pass"
+    <input type="password" id="pass" name="password"
     >
 
-    <br><br>
-
+  
 
     
-    <label for="phone">Admin ID:</label>
-    <input type="number" id="ID " name="ID"
-    placeholder="123">
+    
     <br><br>
 
 
     <input type ="reset">
 
-   <input type ="submit">
-
+    <button type="submit" name="login">Log in:</button> 
     </form>
     <?php include_once("footer.php"); ?>
 </body>
