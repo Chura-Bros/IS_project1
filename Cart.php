@@ -19,7 +19,7 @@
 <table>
 <tr>
     <th>Product</th>
-    <th>Quantity</th>
+    <th></th>
     <th>Subtotal</th>
 </tr>
 <tr>
@@ -35,7 +35,7 @@
             
         </div>
     </td>
-    <td><input type="number"value="1"></td>
+    <td></td>
     <td>KSh 7,000</td>
 </tr>
 <tr>
@@ -51,7 +51,7 @@
             
         </div>
     </td>
-    <td><input type="number"value="1"></td>
+    <td></td>
     <td>KSh 7,000</td>
 </tr>
 <tr>
@@ -67,7 +67,7 @@
             
         </div>
     </td>
-    <td><input type="number"value="1"></td>
+    <td></td>
     <td>KSh 7,000</td>
 </tr>
 <tr>
@@ -83,7 +83,7 @@
             
         </div>
     </td>
-    <td><input type="number"value="1"></td>
+    <td></td>
     <td>KSh 7,000</td>
 </tr>
 

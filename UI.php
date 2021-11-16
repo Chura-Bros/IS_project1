@@ -6,9 +6,7 @@ $price=0;
 $qty=0;
 $desc="";
 
-$query="(SELECT * FROM product_details)" ;
 
-$result = $mysqli->query($query) or die($mysqli->error);
 ?>
 
 <!DOCTYPE html>
@@ -28,7 +26,9 @@ $result = $mysqli->query($query) or die($mysqli->error);
 <body>
 <?php include_once("header.php"); ?>
      <?php
-              
+             $query="(SELECT * FROM product_details)" ;
+
+             $result = $mysqli->query($query) or die($mysqli->error); 
               if($result){
                while($row=mysqli_fetch_assoc($result)) {
                 $ID=$row['product_ID'];
