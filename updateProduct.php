@@ -8,9 +8,7 @@ if(isset($_POST['update-product'])){
     $qty=$_POST['product_qty'];
     $desc=$_POST['product_desc'];
 
-
-    $query="update 'churabros'set product_name='$name',
-    product_price=$price,product_qty=$qty,product_desc='$desc' where product_ID=$id";
+           $query = "UPDATE `product_details` SET `product_name`='$name',`product_price`='$price',`product_qty`='$qty',`product_desc`='$desc' WHERE `product_ID`='$id'";
 
     $mysqli->query($query) or die($mysqli->error);
 

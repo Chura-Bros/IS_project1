@@ -2,7 +2,7 @@
 session_start();
 
 include("connect.php");
-include("LoginFunction.php");
+include("AdminLoginFunction.php");
 
 if($_SERVER['REQUEST_METHOD'] == "POST"){
     // Something was posted
@@ -10,9 +10,9 @@ if($_SERVER['REQUEST_METHOD'] == "POST"){
     
    $password = $_POST['password'];
 
-   if(!empty($ID) && !empty($password) && !is_numeric($ID)){
+   if(!empty($ID) && !empty($password) && is_numeric($ID)){
     // read from database
-    $query = "select * from admin_details where admin_ID = '$ID' limit 1";
+    $query = "SELECT * FROM `admin_details` WHERE `admin_ID`='$ID' LIMIT 1";
     $result = mysqli_query($conn, $query);
 
     if($result && mysqli_num_rows($result) > 0){
@@ -49,7 +49,7 @@ if($_SERVER['REQUEST_METHOD'] == "POST"){
 <?php include_once("header.php"); ?>
   
     <br><br>
-    <form > 
+    <form action=""method="post"> 
         <h3>Admin Login</h3>
         <label for="phone">Admin ID:</label>
     <input type="text" id="ID " name="admin_ID"

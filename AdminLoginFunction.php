@@ -1,10 +1,10 @@
 <?php
 function check_login($con){
 
-    if(isset($_SESSION['email'])){
-        $email = $_SESSION['email'];
-        $query = "SELECT * FROM `customer_details` WHERE `email`='$email' LIMIT 1";
-        
+    if(isset($_SESSION['admin_ID'])){
+        $ID = $_SESSION['admin_ID'];
+        $query =  "SELECT * FROM `admin_details` WHERE `admin_ID`='$ID' LIMIT 1";
+    
         $result = mysqli_query($con, $query);
 
         if($result && mysqli_num_rows($result) > 0){
@@ -15,6 +15,6 @@ function check_login($con){
 
     //redirect to login
     echo "redirecting....";
-    header("Location: Login.php");
+    header("Location: Admin log in.php");
     die;
 }

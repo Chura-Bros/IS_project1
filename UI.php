@@ -1,6 +1,14 @@
-
 <?php
-include 'connect.php';
+include_once 'connect.php';
+$ID=7;
+$name="";
+$price=0;
+$qty=0;
+$desc="";
+
+$query="(SELECT * FROM product_details)" ;
+
+$result = $mysqli->query($query) or die($mysqli->error);
 ?>
 
 <!DOCTYPE html>
@@ -19,9 +27,8 @@ include 'connect.php';
 </head>
 <body>
 <?php include_once("header.php"); ?>
-    <!-- <?php
-              $sql="select*from'product_details'";
-              $result=mysqli_query($con,$sql);
+     <?php
+              
               if($result){
                while($row=mysqli_fetch_assoc($result)) {
                 $ID=$row['product_ID'];
@@ -33,13 +40,13 @@ include 'connect.php';
                 <img src="./Photos/HRX socks.jpg" alt="thisirt1">
                 <h4>'.$name.'</h4>
               <p>KSH '.$price.'</p> 
-               <a class="add-cart cart1"href="#"> Add Cart</a>
-          </div>';
+              <button type="submit" name="add-cart">Add to cart </button> 
+              </div>';
                }
                 
               }
 
-              ?> -->
+              ?> 
     
   <!-- <div class ="container">
       <div class="image">
