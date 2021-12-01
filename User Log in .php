@@ -1,38 +1,4 @@
-<?php
-session_start();
 
-include("connect.php");
-include("LoginFunction.php");
-
-if($_SERVER['REQUEST_METHOD'] == "POST"){
-    // Something was posted
-   $email = $_POST['email'];
-    
-   $password = $_POST['password'];
-
-   if(!empty($email) && !empty($password) && !is_numeric($email)){
-    // read from database
-    $query = "SELECT * FROM `customer_details` WHERE `email`='$email' LIMIT 1";
-    $result = $mysqli->query($query) or die($mysqli->error);
-    // $result = mysqli_query($conn, $query);
-
-    if($result && mysqli_num_rows($result) > 0){
-        $user_data = mysqli_fetch_assoc($result);
-        var_dump("line 21: ".$result);
-        if($user_data['password'] === $password){
-            $_SESSION['email'] = $user_data['email'];
-            
-            header("location: UI.php");
-            die;
-        }
-    }  
-    echo "Wrong email or password!";
-}else{
-       echo "Outer Wrong email or password!";
-   }
-}
-
-?>
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -52,8 +18,11 @@ if($_SERVER['REQUEST_METHOD'] == "POST"){
    
     <br><br>
 
-    <form action=""method="post"> 
+    <form action="LoginFunction.php"method="post"> 
         <h3>User Login</h3>
+        <?php if(isset($_GET['error'])){?>
+<p class="error"><?php echo $_GET['error'];?></p>
+       <?php }?>
  
     <label for="email">Email Address:</label>
     <input type="Email" id="email" name="email"
@@ -69,7 +38,7 @@ if($_SERVER['REQUEST_METHOD'] == "POST"){
 
     <input type ="reset">
 
-    <button type="submit" name="login">Log in:</button> 
+    <button type="submit" >Log in:</button> 
 
    <p>If you dont have an account click here <a href="create account.php" >Create account</a> </p>
 

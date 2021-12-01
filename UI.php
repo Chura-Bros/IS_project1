@@ -1,11 +1,22 @@
 <?php
 include_once 'connect.php';
-$ID=7;
-$name="";
-$price=0;
-$qty=0;
-$desc="";
+if(isset($_POST['add_to_cart'])){
+    $ID=$_POST['product_ID'];
+    $name=$_POST['product_name'];
+    $price=$_POST['product_price'];
+    $qty=$_POST['product_qty'];
+    $desc=$_POST['product_desc'];
 
+
+    $query="insert into order_details (product_ID,product_name,product_price,product_qty,product_desc)
+
+    values ('$ID', '$name', '$price', '$qty', '$desc')" ;
+
+    $mysqli->query($query) or die($mysqli->error);
+
+    (header("location: productList.php"));
+
+}
 
 ?>
 
@@ -21,59 +32,39 @@ $desc="";
 <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
     <title>Document</title>
     
-  <link rel="stylesheet" href="style.css">
+  <link rel="stylesheet" href="style.css?v=<?php echo time();?>">
 </head>
 <body>
 <?php include_once("header.php"); ?>
      <?php
-             $query="(SELECT * FROM product_details)" ;
+           $query="SELECT * FROM product_details";
+           $result = $mysqli->query($query) or die($mysqli->error);
 
-             $result = $mysqli->query($query) or die($mysqli->error); 
-              if($result){
-               while($row=mysqli_fetch_assoc($result)) {
-                $ID=$row['product_ID'];
-                $name=$row['product_name'];
-                $price=$row['product_price'];
-                $qty=$row['product_qty'];
-                $desc=$row['product_desc'];
-                echo '  <div class="image">
-                <img src="./Photos/HRX socks.jpg" alt="thisirt1">
-                <h4>'.$name.'</h4>
-              <p>KSH '.$price.'</p> 
-              <button type="submit" name="add-cart">Add to cart </button> 
-              </div>';
-               }
-                
-              }
+            while($row=mysqli_fetch_array($result)){?>
+
+            <form method="post" action="UI.php?id=<?=$row["product_ID"];?>">
+            <img src="./Photos/HRX socks.jpg" >
+            <h3><?=$row['product_name'];?></h2>
+            <h4>$<?=number_format($row['product_price'],2);?></h2>
+            <input type="hidden" name="product_ID" value="<?=$row['product_ID']?>">
+            <input type="hidden" name="product_name" value="<?=$row['product_name']?>">
+            <input type="hidden" name="product_price" value="<?=$row['product_price']?>">
+            <input type="hidden" name="product_qty" value="<?=$row['product_qty']?>">
+            <input type="hidden" name="product_desc" value="<?=$row['product_desc']?>">
+
+            <input type="submit"name="add_to_cart"value="Add To Cart" >
+
+            </form>
+
+            <?php }
+              
 
               ?> 
-    
-  <!-- <div class ="container">
-      <div class="image">
-          <img src="./Photos/HRX socks.jpg" alt="thisirt1">
-          <h4>HRX socks</h4>
-        <p>KSH 1,000</p> 
-         <a class="add-cart cart1"href="#"> Add Cart</a>
-    </div>
-    <div class="image">
-        <img src="./Photos/Roadstar Shoes jpg.jpg" alt="thisirt1">
-        <h4>road star shoes </h4>
-      <p>KSH 6,000</p> 
-       <a class="add-cart "href="#"> Add Cart</a>
-       
-  </div>
-  <div class="image">
-    <img src="./Photos/Black reebok shoes .jpg" alt="thisirt1">
-    <h4>reebok shoes </h4>
-  <p>KSH 7,000</p> 
-   <a class="add-cart "href=""> Add Cart</a>
+<br><br><br>
+              <h3>Cart</h2>
    
-</div>
-<div class="image">
-    <img src="./Photos/Fossil watch .jpg" alt="thisirt1">
-    <h4>Fossil watch</h4>
-  <p>KSH 11,000</p> 
-   <a class="add-cart "href="#"> Add Cart</a> -->
+    
+
    
 </div>
 
