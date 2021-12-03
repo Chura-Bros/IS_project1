@@ -35,7 +35,7 @@ $hashed=hash('sha512',$pass);
     
 
         <title>Document</title>
-      <link rel="stylesheet" href="style.css">
+        <link rel="stylesheet" href="style.css?v=<?php echo time();?>">
 </head>
 <body>
 <?php include_once("header.php"); ?>

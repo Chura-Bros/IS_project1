@@ -16,11 +16,15 @@ if(isset($_SESSION['ID']) && isset($_SESSION['email'])){
 <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
     <title>Document</title>
     
-  <link rel="stylesheet" href="style.css?v=<?php echo time();?>">
+    <link rel="stylesheet" href="style.css?v=<?php echo time();?>">
 </head>
 <body>
+<?php include_once("header.php"); ?>
+
     <h1>Hello, <?php echo $_SESSION['email']; ?></h1>
     <a href="logout.php">Logout</a>
+    <?php include_once("footer.php"); ?>
+
 </body>
 <html>
  

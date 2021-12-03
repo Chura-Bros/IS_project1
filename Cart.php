@@ -1,3 +1,17 @@
+
+<?php
+include_once 'connect.php';
+$ID=7;
+$name="";
+$price=0;
+$qty=0;
+$desc="";
+
+$query="(SELECT * FROM order_details)" ;
+
+$result = $mysqli->query($query) or die($mysqli->error);
+?>
+
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -10,111 +24,59 @@
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
 
         <title>Document</title>
-      <link rel="stylesheet" href="style.css">
+        <link rel="stylesheet" href="style.css?v=<?php echo time();?>">
 </head>
 <body>
 <?php include_once("header.php"); ?>
+    <div class="button">
+        <a href="./UI.php">Continue shopping 
 
-        <div class="small-container cart-page">
-<table>
-<tr>
-    <th>Product</th>
-    <th></th>
-    <th>Subtotal</th>
-</tr>
-<tr>
-    <td>
-        <div class="cart-info">
-            <img src="./images/buy-1.jpg">
-            <div>
-                <p>printed shirt </p>
-                <small>KSh 7,000</small>
-                <br>
-                <button type="submit" name="add-user">Remove:</button> 
-            </div>
-            
-        </div>
-    </td>
-    <td></td>
-    <td>KSh 7,000</td>
-</tr>
-<tr>
-    <td>
-        <div class="cart-info">
-            <img src="./images/buy-1.jpg">
-            <div>
-                <p>printed shirt </p>
-                <small>KSh 7,000</small>
-                <br>
-                <button type="submit" name="add-user">Remove:</button> 
-            </div>
-            
-        </div>
-    </td>
-    <td></td>
-    <td>KSh 7,000</td>
-</tr>
-<tr>
-    <td>
-        <div class="cart-info">
-            <img src="./images/buy-1.jpg">
-            <div>
-                <p>printed shirt </p>
-                <small>KSh 7,000</small>
-                <br>
-                <button type="submit" name="add-user">Remove:</button> 
-            </div>
-            
-        </div>
-    </td>
-    <td></td>
-    <td>KSh 7,000</td>
-</tr>
-<tr>
-    <td>
-        <div class="cart-info">
-            <img src="./images/buy-1.jpg">
-            <div>
-                <p>printed shirt </p>
-                <small>KSh 7,000</small>
-                <br>
-                <button type="submit" name="add-user">Remove:</button> 
-            </div>
-            
-        </div>
-    </td>
-    <td></td>
-    <td>KSh 7,000</td>
-</tr>
+        </a>
 
-</table>
+        <table class="table">
+            <thead>
+              <tr>
+              <th scope="col">Order ID</th>
+                <th scope="col">Product ID</th>
+                <th scope="col">Product Name </th>
+                <th scope="col">Product Price</th>
+                <th scope="col">Product Quantity</th>
+                <th scope="col">Product Description</th>
+                <th scope="col">Operations</th>
+              </tr>
+            </thead>
+            <tbody>
+              <?php
+          
+              if($result){
+               
+               while($row=mysqli_fetch_assoc($result)) {
+                   $ID=(int)$row['ID'];
+                $product_ID=(int)$row['product_ID'];
+                $name=$row['product_name'];
+                $price=$row['product_price'];
+                $qty=$row['product_qty'];
+                $desc=$row['product_desc'];
+                echo '<tr>
+                <td>'.$ID.'</td>
+                <td>'.$product_ID.'</td>
+                <td>'.$name.'</td>
+                <td> '.$price.'</td>
+                <td> '.$qty.'</td>
+                <td> '.$desc.'</td>
+                <td>
+                 <button type="submit" name="delete"><a href="deleteOrder.php?ID='.$ID.'">Delete<a></button>
+                </td>
+              </tr>';
+               }
+                
+              }
 
-<div class="total-price">
-    <table>
-        <tr>
-            <td>subtotal</td>
-            <td>ksh 100,000</td>
-        </tr>
-        <tr>
-            <td>tax</td>
-            <td>ksh 1,300</td>
-        </tr>
-        <tr>
-            <td>Total</td>
-            <td>ksh 101,300</td>
-        </tr>
-        
-    </table>
-    <br><br>
-    
-</div>
-
-        </div>
-        <div class="place-order">
-            <button type="submit" name="add-user">Place Order:</button> 
-
-        </div>
-
-
-            
-        </body>
+              ?>        
+             
+            </tbody>
+          </table>
+    </div>
+    <?php include_once("footer.php"); ?>
+</body>
+</html>
