@@ -24,25 +24,26 @@ if(isset($_POST['email']) && isset($_POST['password'])) {
         if(mysqli_num_rows($result)===1){
             $row = mysqli_fetch_assoc($result);
            if($row['email']==$email && $row['password']==$password){
-            $_SESSION['email']=$row['email'];
+            $_SESSION['ID']=$row['ID'];
             $_SESSION['first_name']=$row['first_name'];
             $_SESSION['last_name']=$row['last_name'];
             $_SESSION['address']=$row['address'];
-            $_SESSION['ID']=$row['ID'];
+            $_SESSION['email']=$row['email'];
             $_SESSION['phone_no']=$row['phone_no'];
-            header("Location:UserDashBoard.php");
+
+            header("Location: UserDashBoard.php");
             exit();
            }else{
-            header("Location: User Log in .php?error=Incorrect Emaill or password");
+            header("Location: User Log in .php?error=Incorrect email or password");
             exit();
         }
         }else{
-            header("Location: User Log in .php?error=Incorrect Emaill or password");
+            header("Location: User Log in .php?error=Incorrect email or password");
             exit();
         }
     }
 
 }else{
-    header("Location: User Log in php");
+    header("Location: UserDashBoard.php");
     exit();
 }

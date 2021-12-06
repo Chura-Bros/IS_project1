@@ -1,20 +1,48 @@
 <?php
-function check_login($con){
+session_start();
+include_once 'connect.php';
+if(isset($_POST['email']) && isset($_POST['password'])) {
+    function validate($data){
+        $data=trim($data);
+        $data=stripslashes($data);
+        $data=htmlspecialchars($data);
+        return $data;
+    }
+    $email=validate($_POST['email']);
+    $password=validate($_POST['password']);
 
-    if(isset($_SESSION['admin_ID'])){
-        $ID = $_SESSION['admin_ID'];
-        $query =  "SELECT * FROM `admin_details` WHERE `admin_ID`='$ID' LIMIT 1";
-    
-        $result = mysqli_query($con, $query);
+    if(empty($email)){
+        header("Location: Admin log in.php?error=email is required");
+        exit();
+    }else if(empty($password)){
+        header("Location: Admin log in.php?error=password is required");
+        exit();
+    }else{
+        $sql="SELECT * FROM admin_details WHERE email ='$email' AND password ='$password'";
+        
+        $result = $mysqli->query($sql) or die($mysqli->error);
+        if(mysqli_num_rows($result)===1){
+            $row = mysqli_fetch_assoc($result);
+           if($row['email']==$email && $row['password']==$password){
+            $_SESSION['admin_ID']=$row['admin_ID'];
+            $_SESSION['admin_name']=$row['admin_name'];
+            $_SESSION['password']=$row['password'];
+            $_SESSION['email']=$row['email'];
+            $_SESSION['phone_no']=$row['phone_no'];
 
-        if($result && mysqli_num_rows($result) > 0){
-            $user_data = mysqli_fetch_assoc($result);
-            return $user_data;
+            header("Location: AdminPanel.php");
+            exit();
+           }else{
+            header("Location: Admin log in.php?error=Incorrect email or password");
+            exit();
+        }
+        }else{
+            header("Location: Admin log in.php?error=Incorrect email or password");
+            exit();
         }
     }
 
-    //redirect to login
-    echo "redirecting....";
-    header("Location: Admin log in.php");
-    die;
+}else{
+    header("Location: AdminPanel.php");
+    exit();
 }

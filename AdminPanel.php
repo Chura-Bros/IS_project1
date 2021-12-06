@@ -1,6 +1,6 @@
 <?php
 session_start();
-if(isset($_SESSION['ID']) && isset($_SESSION['email'])){
+if(isset($_SESSION['admin_ID']) && isset($_SESSION['email'])){
 
 ?>
 
@@ -21,7 +21,7 @@ if(isset($_SESSION['ID']) && isset($_SESSION['email'])){
 <body>
 <?php include_once("header.php"); ?>
 
-    <h1>Hello, <?php echo $_SESSION['first_name']; ?></h1>
+    <h1>Hello, <?php echo $_SESSION['email']; ?></h1>
     <a href="logout.php">Logout</a>
     <?php include_once("footer.php"); ?>
 
@@ -30,7 +30,7 @@ if(isset($_SESSION['ID']) && isset($_SESSION['email'])){
  
 <?php
 }else{
-    header("Location: User Log in .php");
+    header("Location: UI.php");
     exit();
 }
 ?>
