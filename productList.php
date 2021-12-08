@@ -3,7 +3,7 @@ include_once 'connect.php';
 $ID=7;
 $name="";
 $price=0;
-$qty=0;
+$image="";
 $desc="";
 
 $query="(SELECT * FROM product_details)" ;
@@ -28,15 +28,14 @@ $result = $mysqli->query($query) or die($mysqli->error);
 <body>
 <?php include_once("header.php"); ?>
     <div class="button">
-        <a href="./AddProduct.php">Add product</a>
-
+        <a class="Product" href="./AddProduct.php"><i class="fa fa-plus" style="font-size:20px"></i>  Add product</a>
         <table class="table">
             <thead>
               <tr>
                 <th scope="col">Product ID</th>
                 <th scope="col">Product Name </th>
                 <th scope="col">Product Price</th>
-                <th scope="col">Product Quantity</th>
+               
                 <th scope="col">Product Description</th>
                 <th scope="col">Operations</th>
               </tr>
@@ -50,13 +49,13 @@ $result = $mysqli->query($query) or die($mysqli->error);
                 $ID=(int)$row['product_ID'];
                 $name=$row['product_name'];
                 $price=$row['product_price'];
-                $qty=$row['product_qty'];
+               
                 $desc=$row['product_desc'];
                 echo '<tr>
                 <td>'.$ID.'</td>
                 <td>'.$name.'</td>
                 <td> '.$price.'</td>
-                <td> '.$qty.'</td>
+               
                 <td> '.$desc.'</td>
                 <td>
                   <button type="submit" name="update"><a href="updateProduct.php?product_ID='.$ID.'">Update<a></button>

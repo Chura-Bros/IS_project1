@@ -4,17 +4,17 @@ if(isset($_POST['add_to_cart'])){
     $ID=$_POST['product_ID'];
     $name=$_POST['product_name'];
     $price=$_POST['product_price'];
-    $qty=$_POST['product_qty'];
+    // $image=$_POST['image'];
     $desc=$_POST['product_desc'];
 
 
-    $query="insert into order_details (product_ID,product_name,product_price,product_qty,product_desc)
+    $query="insert into order_details (product_ID,product_name,product_price,product_desc)
 
-    values ('$ID', '$name', '$price', '$qty', '$desc')" ;
+    values ('$ID', '$name', '$price', '$desc')" ;
 
     $mysqli->query($query) or die($mysqli->error);
 
-    (header("location: productList.php"));
+    (header("location: cart.php"));
 
 }
 
@@ -32,10 +32,12 @@ if(isset($_POST['add_to_cart'])){
 <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
     <title>Document</title>
     
-  <link rel="stylesheet" href="style.css?v=<?php echo time();?>">
+  <link rel="stylesheet" href="home.css?v=<?php echo time();?>">
 </head>
-<body>
-<?php include_once("header.php"); ?>
+<body><?php include_once("header.php"); ?>
+
+  <div class="outer">
+
      <?php
            $query="SELECT * FROM product_details";
            $result = $mysqli->query($query) or die($mysqli->error);
@@ -43,26 +45,24 @@ if(isset($_POST['add_to_cart'])){
             while($row=mysqli_fetch_array($result)){?>
 
             <form method="post" action="UI.php?id=<?=$row["product_ID"];?>">
-            <img src="./Photos/HRX socks.jpg" >
+            <?php echo '<img src="data:image;base64, '.base64_encode($row['image']).'" alt="Image"';?><br><br>  
             <h3><?=$row['product_name'];?></h2>
             <h4>$<?=number_format($row['product_price'],2);?></h2>
             <input type="hidden" name="product_ID" value="<?=$row['product_ID']?>">
             <input type="hidden" name="product_name" value="<?=$row['product_name']?>">
             <input type="hidden" name="product_price" value="<?=$row['product_price']?>">
-            <input type="hidden" name="product_qty" value="<?=$row['product_qty']?>">
+            <!-- <input type="hidden" name="image" value="<?=$row['image']?>"> -->
             <input type="hidden" name="product_desc" value="<?=$row['product_desc']?>">
 
             <input type="submit"name="add_to_cart"value="Add To Cart" >
 
             </form>
-
+           
             <?php }
               
 
               ?> 
-<br><br><br>
-              <h3>Cart</h2>
-   
+    </div>
     
 
    
