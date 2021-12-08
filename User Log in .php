@@ -11,10 +11,10 @@
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
 
         <title>Document</title>
-        <link rel="stylesheet" href="style.css?v=<?php echo time();?>">
+        <link rel="stylesheet" href="form.css?v=<?php echo time();?>">
 </head>
 <body>
-<?php include_once("header.php"); ?>
+<!-- <?php include_once("header.php"); ?> -->
    
     <br><br>
 
@@ -36,15 +36,16 @@
     <br><br>
   
 
-    <input type ="reset">
+ 
 
     <button type="submit" >Log in:</button> 
+    <br><br>
 
    <p>If you dont have an account click here <a href="create account.php" >Create account</a> </p>
 
     </form>
 
     
-    <?php include_once("footer.php"); ?>
+     -->
 </body>
 </html>

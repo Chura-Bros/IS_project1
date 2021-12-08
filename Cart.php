@@ -40,7 +40,6 @@ $result = $mysqli->query($query) or die($mysqli->error);
                 <th scope="col">Product ID</th>
                 <th scope="col">Product Name </th>
                 <th scope="col">Product Price</th>
-                <th scope="col">Product Quantity</th>
                 <th scope="col">Product Description</th>
                 <th scope="col">Operations</th>
               </tr>
@@ -55,14 +54,12 @@ $result = $mysqli->query($query) or die($mysqli->error);
                 $product_ID=(int)$row['product_ID'];
                 $name=$row['product_name'];
                 $price=$row['product_price'];
-                $qty=$row['product_qty'];
                 $desc=$row['product_desc'];
                 echo '<tr>
                 <td>'.$ID.'</td>
                 <td>'.$product_ID.'</td>
                 <td>'.$name.'</td>
                 <td> '.$price.'</td>
-                <td> '.$qty.'</td>
                 <td> '.$desc.'</td>
                 <td>
                  <button type="submit" name="delete"><a href="deleteOrder.php?ID='.$ID.'">Delete<a></button>

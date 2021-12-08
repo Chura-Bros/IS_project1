@@ -204,3 +204,30 @@ text-transform: capitalize;
     opacity: .4;
     font-weight:200 ;
 }
+
+.Product {
+	float: right;
+	background: blue;
+	padding: 10px 15px;
+	color: #fff;
+	border-radius: 5px;
+	margin-right: 10px;
+	border: none;
+	text-decoration: none;
+}
+button[name="delete"]  {
+	float: right;
+	background: red;
+	padding: 10px 15px;
+	border-radius: 5px;
+	margin-right: 10px;
+	border: none;
+}
+button[name="update"]  {
+	float: right;
+	background: green;
+	padding: 10px 15px;
+	border-radius: 5px;
+	margin-right: 10px;
+	border: none;
+}

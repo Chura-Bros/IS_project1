@@ -5,10 +5,10 @@ if(isset($_POST['update-product'])){
     $id = (int)$_GET['product_ID'];
     $name=$_POST['product_name'];
     $price=$_POST['product_price'];
-    $qty=$_POST['product_qty'];
+    $image=$_POST['image'];
     $desc=$_POST['product_desc'];
 
-           $query = "UPDATE `product_details` SET `product_name`='$name',`product_price`='$price',`product_qty`='$qty',`product_desc`='$desc' WHERE `product_ID`='$id'";
+           $query = "UPDATE `product_details` SET `product_name`='$name',`product_price`='$price',`image`='$image',`product_desc`='$desc' WHERE `product_ID`='$id'";
 
     $mysqli->query($query) or die($mysqli->error);
 
@@ -55,9 +55,9 @@ if(isset($_POST['update-product'])){
         placeholder="product price ">
        
         <br><br>
-        <label for="QTY">Product Quantity:</label>
-        <input type="text" id="product_Quantity" name="product_qty"
-        placeholder="product Quantity ">
+        <label for="image">image:</label>
+        <input type="text" id="product_Quantity" name="image"
+        placeholder="URL ">
     
         <br><br>
         <label for="Product_description">Product description:</label>
