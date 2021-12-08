@@ -27,6 +27,8 @@ $result = $mysqli->query($query) or die($mysqli->error);
 </head>
 <body>
 <?php include_once("AdminHeader.php"); ?>
+<h1>Inventory</h1>
+
     <div class="button">
         <a class="Product" href="./AddProduct.php"><i class="fa fa-plus" style="font-size:20px"></i>  Add product</a>
         <table class="table"id="customers">

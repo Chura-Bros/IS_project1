@@ -23,17 +23,20 @@ $result = $mysqli->query($query) or die($mysqli->error);
     <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@100&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
 
-        <title>Document</title>
-        <link rel="stylesheet" href="style.css?v=<?php echo time();?>">
+        <title>Orders</title>
+        <link rel="stylesheet" href="table.css?v=<?php echo time();?>">
 </head>
 <body>
+
 <?php include_once("header.php"); ?>
+<h1> Orders</h1>
+
     <div class="button">
-        <a href="./UI.php">Continue shopping 
+        <a class="Product" href="./UI.php">Continue shopping 
 
         </a>
 
-        <table class="table">
+        <table class="table"id="customers">
             <thead>
               <tr>
               <th scope="col">Order ID</th>
