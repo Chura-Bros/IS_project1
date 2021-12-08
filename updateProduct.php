@@ -5,8 +5,7 @@ if(isset($_POST['update-product'])){
     $id = (int)$_GET['product_ID'];
     $name=$_POST['product_name'];
     $price=$_POST['product_price'];
-    $image=$_POST['image'];
-    $desc=$_POST['product_desc'];
+    $image= addslashes (file_get_contents($_FILES["image"]["tmp_name"]));    $desc=$_POST['product_desc'];
 
            $query = "UPDATE `product_details` SET `product_name`='$name',`product_price`='$price',`image`='$image',`product_desc`='$desc' WHERE `product_ID`='$id'";
 
@@ -32,14 +31,14 @@ if(isset($_POST['update-product'])){
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
 
         <title>Update</title>
-        <link rel="stylesheet" href="style.css?v=<?php echo time();?>">
+        <link rel="stylesheet" href="form.css?=<?php echo time();?>">
 </head>
 <body>
-<?php include_once("header.php"); ?>
+<!-- <?php include_once("AdminHeader.php"); ?> -->
        
         <br><br>
-    <form method="POST" action=""> 
-        <h3>update product </h3>
+    <form method="POST" action="" enctype="multipart/form-data"> 
+        <h2>update product </h2>
         <!-- <label for="Product_ID">Product ID:</label>
         <input type="text" id="product_ID" name="product_ID"
         placeholder="product ID "> -->
@@ -54,9 +53,10 @@ if(isset($_POST['update-product'])){
         <input type="text" id="product_price" name="product_price"
         placeholder="product price ">
        
+       
         <br><br>
-        <label for="image">image:</label>
-        <input type="text" id="product_Quantity" name="image"
+        <label for="image">Product image:</label>
+        <input type="file" id="image" name="image"
         placeholder="URL ">
     
         <br><br>
@@ -68,6 +68,6 @@ if(isset($_POST['update-product'])){
         <button type="submit" name="update-product">Update</button> 
        
     </form>
-    <?php include_once("footer.php"); ?>
+    <!-- <?php include_once("footer.php"); ?> -->
 </body>
  </html>

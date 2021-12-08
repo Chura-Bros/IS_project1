@@ -12,10 +12,10 @@
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
 
         <title>Document</title>
-        <link rel="stylesheet" href="style.css?v=<?php echo time();?>">
+        <link rel="stylesheet" href="form.css?v=<?php echo time();?>">
 </head>
 <body>
-<?php include_once("header.php"); ?>
+<?php include_once("AdminHeader.php"); ?>
   
     <br><br>
     <form action="AdminLoginFunction.php"method="post"> 

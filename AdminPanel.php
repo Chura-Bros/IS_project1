@@ -19,7 +19,7 @@ if(isset($_SESSION['admin_ID']) && isset($_SESSION['email'])){
     <link rel="stylesheet" href="style.css?v=<?php echo time();?>">
 </head>
 <body>
-<?php include_once("header.php"); ?>
+<?php include_once("AdminHeader.php"); ?>
 
     <h1>Hello, <?php echo $_SESSION['email']; ?></h1>
     <a href="logout.php">Logout</a>
