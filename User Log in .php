@@ -19,7 +19,7 @@
     <br><br>
 
     <form action="LoginFunction.php"method="post"> 
-        <h3>User Login</h3>
+        <h2>User Login</h3>
         <?php if(isset($_GET['error'])){?>
 <p class="error"><?php echo $_GET['error'];?></p>
        <?php }?>

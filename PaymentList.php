@@ -1,4 +1,3 @@
-
 <?php
 include_once 'connect.php';
 $ID=7;
@@ -7,7 +6,7 @@ $price=0;
 $qty=0;
 $desc="";
 
-$query="(SELECT * FROM order_details)" ;
+$query="(SELECT * FROM payment_details)" ;
 
 $result = $mysqli->query($query) or die($mysqli->error);
 ?>
@@ -23,28 +22,27 @@ $result = $mysqli->query($query) or die($mysqli->error);
     <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@100&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
 
-        <title>Orders</title>
+        <title>Document</title>
         <link rel="stylesheet" href="table.css?v=<?php echo time();?>">
 </head>
 <body>
+<?php include_once("AdminHeader.php"); ?> 
+<h1>Payments </h1>
+<div class="button">
 
-<?php include_once("header.php"); ?>
-<h1> Orders</h1>
+        <!-- <a href="./AddProduct.php">Add product</a> -->
+        <br><br>
 
-    <div class="button">
-        <a class="Product" href="./UI.php">Continue shopping 
-
-        </a>
-
-        <table class="table"id="customers">
+        <table class="table" id="customers">
             <thead>
               <tr>
-              <th scope="col">Order ID</th>
-                <th scope="col">Product ID</th>
-                <th scope="col">Product Name </th>
-                <th scope="col">Product Price</th>
-                <th scope="col">Product Description</th>
-                <th scope="col">Operations</th>
+                <th scope="col">Payment ID ID</th>
+                <th scope="col">first Name </th>
+                <th scope="col">Last Name</th>
+                <th scope="col">email</th>
+                <th scope="col">Phone no</th>
+                <th scope="col">Method</th>
+
               </tr>
             </thead>
             <tbody>
@@ -53,29 +51,26 @@ $result = $mysqli->query($query) or die($mysqli->error);
               if($result){
                
                while($row=mysqli_fetch_assoc($result)) {
-                   $ID=(int)$row['ID'];
-                $product_ID=(int)$row['product_ID'];
-                $name=$row['product_name'];
-                $price=$row['product_price'];
-                $desc=$row['product_desc'];
+                $ID=(int)$row['ID'];
+                $f_name=$row['first_name'];
+                $l_name=$row['last_name'];
+                $email=$row['email'];
+                $phone=$row['phone_no'];
+                $method=$row['method'];
                 echo '<tr>
                 <td>'.$ID.'</td>
-                <td>'.$product_ID.'</td>
-                <td>'.$name.'</td>
-                <td> '.$price.'</td>
-                <td> '.$desc.'</td>
-                <td>
-                 <button type="submit" name="delete"><a href="deleteOrder.php?ID='.$ID.'">Delete<a></button>
-                </td>
+                <td>'.$f_name.'</td>
+                <td>'.$l_name.'</td>
+                <td> '.$email.'</td>
+                <td> '.$phone.'</td>
+                <td>'.$method.'</td>
+              
               </tr>';
                }
                 
               }
 
-              ?>   
-        <a class="Payment" href="./Addpayment.php">Payment 
-
-        </a>
+              ?>        
              
             </tbody>
           </table>

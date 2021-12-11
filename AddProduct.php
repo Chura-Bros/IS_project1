@@ -38,14 +38,14 @@ if(isset($_POST['add-product'])){
         <link rel="stylesheet" href="form.css?v=<?php echo time();?>">
 </head>
 <body>
-<?php include_once("header.php"); ?>
+<!-- <?php include_once("header.php"); ?> -->
        
         <br><br>
     <form method="POST" action="" enctype="multipart/form-data"> 
-        <h3>Add product </h3>
-        <label for="Product_ID">Product ID:</label>
+        <h2>Add product </h3>
+        <!-- <label for="Product_ID">Product ID:</label>
         <input type="text" id="product_ID" name="product_ID"
-        placeholder="product ID ">
+        placeholder="product ID "> -->
             
         
         <br><br>
@@ -71,6 +71,6 @@ if(isset($_POST['add-product'])){
         <button type="submit" name="add-product">Add</button> 
        
     </form>
-    <?php include_once("footer.php"); ?>
+    <!-- <?php include_once("footer.php"); ?> -->
 </body>
  </html>

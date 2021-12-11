@@ -148,7 +148,7 @@ footer{
   }
   
   .Product {
-    float: right;
+    float: left;
     background: blue;
     padding: 10px 15px;
     color: #fff;
@@ -157,6 +157,17 @@ footer{
     border: none;
     text-decoration: none;
   }
+  .Payment {
+    float: right;
+    background: rgb(22, 170, 35);
+    padding: 10px 15px;
+    color: #fff;
+    border-radius: 5px;
+    margin-right: 10px;
+    border: none;
+    text-decoration: none;
+  }
+
   button[name="delete"]  {
     float: right;
     background: red;

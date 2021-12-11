@@ -47,21 +47,23 @@ if(isset($_POST['add_to_cart'])){
             <form method="post" action="UI.php?id=<?=$row["product_ID"];?>">
             <?php echo '<img src="data:image;base64, '.base64_encode($row['image']).'" alt="Image"';?><br><br>  
             <h3><?=$row['product_name'];?></h2>
-            <h4>$<?=number_format($row['product_price'],2);?></h2>
+            <h4>KSH<?=number_format($row['product_price'],2);?></h2>
             <input type="hidden" name="product_ID" value="<?=$row['product_ID']?>">
             <input type="hidden" name="product_name" value="<?=$row['product_name']?>">
             <input type="hidden" name="product_price" value="<?=$row['product_price']?>">
             <!-- <input type="hidden" name="image" value="<?=$row['image']?>"> -->
             <input type="hidden" name="product_desc" value="<?=$row['product_desc']?>">
 
-            <input type="submit"name="add_to_cart"value="Add To Cart" >
+            <input type="submit"name="add_to_cart"value="Place Order" >
 
             </form>
+            
            
             <?php }
               
 
               ?> 
+ 
     </div>
     
 
