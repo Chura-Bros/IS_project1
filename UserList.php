@@ -22,7 +22,7 @@ $result = $mysqli->query($query) or die($mysqli->error);
     <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@100&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
 
-        <title>Document</title>
+        <title>Users</title>
         <link rel="stylesheet" href="table.css?v=<?php echo time();?>">
 </head>
 <body>

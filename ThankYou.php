@@ -21,7 +21,7 @@ if(isset($_SESSION['ID']) && isset($_SESSION['email'])){
 <body>
 <!-- <?php include_once("header.php"); ?> -->
 <img src="C:\xampp\htdocs\My IS project\images\buy-1.jpg" alt="">
-    <h1>Hello, <?php echo $_SESSION['first_name']; ?></h1>
+    <h1>ThankYou, <?php echo $_SESSION['first_name']; ?> For shopping with ChuraBros</h1>
     <p>Click here to be redirected to the home page </p>
     <a href="UI.php">Home</a>
 

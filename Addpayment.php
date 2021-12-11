@@ -17,7 +17,7 @@ if(isset($_POST['add-payment'])){
 
     $mysqli->query($query) or die($mysqli->error);
 
-    // (header("location: productList.php"));
+    (header("location: ThankYou.php"));
 
 }
 
